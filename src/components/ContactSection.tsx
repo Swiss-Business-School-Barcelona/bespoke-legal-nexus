@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Send, MessageCircle } from "lucide-react";
+import { Send, MessageCircle, Phone } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
 
@@ -10,7 +10,7 @@ const ContactSection = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const whatsappText = `Hola, soy ${form.name}. ${form.message}`;
-    window.open(`https://wa.me/?text=${encodeURIComponent(whatsappText)}`, "_blank");
+    window.open(`https://wa.me/34691645398?text=${encodeURIComponent(whatsappText)}`, "_blank");
   };
 
   return (
@@ -66,12 +66,19 @@ const ContactSection = () => {
             {t("contact.submit")}
           </button>
         </form>
-        <div className="mt-8">
+        <div className="mt-8 flex flex-col gap-4">
           <a
-            href="https://wa.me/"
+            href="tel:+34691645398"
+            className="inline-flex items-center justify-center gap-3 text-primary font-body text-sm tracking-wide hover:opacity-80 transition-opacity"
+          >
+            <Phone size={20} />
+            +34 691 645 398
+          </a>
+          <a
+            href="https://wa.me/34691645398"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 text-primary font-body text-sm tracking-wide hover:opacity-80 transition-opacity"
+            className="inline-flex items-center justify-center gap-3 text-primary font-body text-sm tracking-wide hover:opacity-80 transition-opacity"
           >
             <MessageCircle size={20} />
             {t("contact.whatsapp")}
