@@ -1,5 +1,5 @@
 import heroBg from "@/assets/hero-bg.jpg";
-import logo from "@/assets/gbo-logo.png";
+import logo from "@/assets/gbo-logo-main.png";
 
 const HeroSection = () => {
   return (
