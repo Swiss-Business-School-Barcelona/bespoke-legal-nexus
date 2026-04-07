@@ -28,6 +28,8 @@ const AboutSection = () => {
               <h3 className="font-display text-xl text-foreground mb-4">Galina Braniste Olarescu</h3>
               <ul className="flex flex-col gap-2 text-muted-foreground font-body text-sm">
                 <li>• Licenciada en Derecho – UOC Barcelona</li>
+                <li>• Màster en Derecho Laboral</li>
+                <li>• Màster en Impuestos y Fiscalidad</li>
                 <li>• Más de 15 años de experiencia</li>
                 <li>• Especialización en entorno internacional</li>
                 <li>• Atención directa y personalizada</li>
