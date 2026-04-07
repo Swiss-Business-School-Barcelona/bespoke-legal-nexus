@@ -1,0 +1,20 @@
+{
+  "contact": {
+    "title": "Consultație privată",
+    "subtitle": "Primul contact este complet confidențial.",
+    "fullName": "Nume complet",
+    "email": "Adresă de e-mail",
+    "phone": "Telefon",
+    "message": "Descrieți pe scurt consulta dumneavoastră",
+    "submit": "Trimiteți cererea",
+    "whatsapp": "WhatsApp direct — Atenție imediată"
+  },
+  "language": {
+    "label": "Limba",
+    "es": "Español",
+    "ca": "Català",
+    "ru": "Русский",
+    "md": "Moldovenesc",
+    "ro": "Română"
+  }
+}

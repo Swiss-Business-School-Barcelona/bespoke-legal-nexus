@@ -1,0 +1,20 @@
+{
+  "contact": {
+    "title": "Consulta privada",
+    "subtitle": "La primera toma de contacto es completamente confidencial.",
+    "fullName": "Nombre completo",
+    "email": "Correo electrónico",
+    "phone": "Teléfono",
+    "message": "Describa brevemente su consulta",
+    "submit": "Enviar consulta",
+    "whatsapp": "WhatsApp directo — Atención inmediata"
+  },
+  "language": {
+    "label": "Idioma",
+    "es": "Español",
+    "ca": "Català",
+    "ru": "Русский",
+    "md": "Moldovenesc",
+    "ro": "Română"
+  }
+}
