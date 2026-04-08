@@ -1,16 +1,47 @@
 import { useState } from "react";
-import { Send, MessageCircle, Phone } from "lucide-react";
+import { Send, MessageCircle, Phone, Mail } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { toast } from "@/components/ui/sonner";
 
 const ContactSection = () => {
   const { t } = useTranslation();
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const whatsappText = `Hola, soy ${form.name}. ${form.message}`;
-    window.open(`https://wa.me/34691645398?text=${encodeURIComponent(whatsappText)}`, "_blank");
+
+    try {
+      setIsSubmitting(true);
+
+      const response = await fetch("https://formsubmit.co/ajax/galina@branistelegal.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          message: form.message,
+          _subject: `Consulta legal - ${form.name}`,
+          _captcha: "false",
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send inquiry");
+      }
+
+      toast.success("Consulta enviada correctamente.");
+      setForm({ name: "", email: "", phone: "", message: "" });
+    } catch {
+      toast.error("No se pudo enviar la consulta. Inténtalo de nuevo.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -60,13 +91,21 @@ const ContactSection = () => {
           />
           <button
             type="submit"
+            disabled={isSubmitting}
             className="bg-gold-gradient text-primary-foreground font-body text-sm tracking-[0.2em] uppercase px-10 py-4 rounded hover:opacity-90 transition-opacity flex items-center justify-center gap-3"
           >
             <Send size={16} />
-            {t("contact.submit")}
+            {isSubmitting ? "Enviando..." : t("contact.submit")}
           </button>
         </form>
         <div className="mt-8 flex flex-col gap-4">
+          <a
+            href="mailto:galina@branistelegal.com"
+            className="inline-flex items-center justify-center gap-3 text-primary font-body text-sm tracking-wide hover:opacity-80 transition-opacity"
+          >
+            <Mail size={20} />
+            galina@branistelegal.com
+          </a>
           <a
             href="tel:+34691645398"
             className="inline-flex items-center justify-center gap-3 text-primary font-body text-sm tracking-wide hover:opacity-80 transition-opacity"
