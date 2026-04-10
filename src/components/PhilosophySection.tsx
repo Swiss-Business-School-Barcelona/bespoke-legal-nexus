@@ -19,7 +19,7 @@ const PhilosophySection = () => {
 
         <div className="border border-border rounded p-10 bg-secondary/30">
           <p className="font-display text-xl text-foreground mb-8">Elegir G.B.O es elegir:</p>
-          <div className="grid sm:grid-cols-2 gap-4">
+          <div className="flex flex-col items-center gap-4">
             {values.map((v) => (
               <div key={v} className="flex items-center gap-3 justify-center">
                 <CheckCircle className="text-primary" size={20} />
