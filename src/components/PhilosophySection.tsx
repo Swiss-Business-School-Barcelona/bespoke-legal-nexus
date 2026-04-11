@@ -19,10 +19,10 @@ const PhilosophySection = () => {
 
         <div className="border border-border rounded p-10 bg-secondary/30">
           <p className="font-display text-xl text-foreground mb-8">Elegir G.B.O es elegir:</p>
-          <div className="flex flex-col items-center gap-4">
+          <div className="mx-auto grid w-full max-w-3xl grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-x-6 gap-y-4 text-left">
             {values.map((v) => (
-              <div key={v} className="flex items-center gap-3 justify-center">
-                <CheckCircle className="text-primary" size={20} />
+              <div key={v} className="flex items-center gap-3">
+                <CheckCircle className="text-primary shrink-0" size={20} />
                 <span className="font-body tracking-wide text-foreground">{v}</span>
               </div>
             ))}
