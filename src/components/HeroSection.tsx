@@ -39,11 +39,11 @@ const HeroSection = () => {
         <div className="gold-divider w-48 md:w-64 mt-8 mb-8" />
 
         <p className="font-elegant italic text-primary text-3xl md:text-5xl leading-tight">
-          Su tranquilidad, garantizada.
+          Su tranquilidad es nuestra responsabilidad absoluta.
         </p>
 
         <p className="font-elegant italic text-primary/85 text-2xl md:text-4xl leading-tight mt-3">
-          Ваше спокойствие гарантировано.
+          Ваше спокойствие — наша полная ответственность.
         </p>
 
         <a
