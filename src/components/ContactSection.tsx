@@ -4,6 +4,9 @@ import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { toast } from "@/components/ui/sonner";
 
+const CONTACT_ENDPOINT =
+  import.meta.env.VITE_CONTACT_ENDPOINT ?? "https://formsubmit.co/ajax/galina@branistelegal.com";
+
 const ContactSection = () => {
   const { t } = useTranslation();
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
@@ -15,7 +18,7 @@ const ContactSection = () => {
     try {
       setIsSubmitting(true);
 
-      const response = await fetch("https://formsubmit.co/ajax/galina@branistelegal.com", {
+      const response = await fetch(CONTACT_ENDPOINT, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -31,14 +34,21 @@ const ContactSection = () => {
         }),
       });
 
-      if (!response.ok) {
-        throw new Error("Failed to send inquiry");
+      const data = await response.json().catch(() => null);
+      const providerSuccess =
+        typeof data?.success === "boolean" ? data.success : data?.success === "true";
+      const providerMessage =
+        typeof data?.message === "string" ? data.message : "No se pudo enviar la consulta.";
+
+      if (!response.ok || !providerSuccess) {
+        throw new Error(providerMessage);
       }
 
       toast.success("Consulta enviada correctamente.");
       setForm({ name: "", email: "", phone: "", message: "" });
-    } catch {
-      toast.error("No se pudo enviar la consulta. Inténtalo de nuevo.");
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "No se pudo enviar la consulta. Intentalo de nuevo.";
+      toast.error(message);
     } finally {
       setIsSubmitting(false);
     }
